@@ -13,7 +13,7 @@ This program approximates the solutions of the Navier-Stokes equations to simula
 <br/>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/angeluriot/2D_fluid_simulation/master/dependencies/resources/2D_fluid.gif" width="700">
+	<img src="https://raw.githubusercontent.com/angeluriot/2D_fluid_simulation/master/resources/misc/2D_fluid.gif" width="700">
 </p>
 
 <br/>
