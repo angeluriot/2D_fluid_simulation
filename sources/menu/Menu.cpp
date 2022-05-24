@@ -50,8 +50,33 @@ void Menu::display()
 		ImGui::PushItemWidth(ImGui::GetWindowWidth() * 0.9f);
 
 		ImGui::NewLine();
+		ImGui::Text("The layer to show:");
+		ImGui::Combo("##layer", reinterpret_cast<int*>(&Renderer::layer), "Density\0Velocity\0Pressure\0Divergence");
 
-		// TODO
+		ImGui::NewLine();
+		ImGui::Text("The quality of the simulation:");
+		if (ImGui::SliderFloat("##quality", &Simulator::quality, 0.1f, 1.f))
+			Simulator::reset();
+
+		ImGui::NewLine();
+		ImGui::Text("The time step of the simulation:");
+		ImGui::SliderFloat("##time_step", &Simulator::time_step, 0.01f, 1.f, NULL, ImGuiSliderFlags_Logarithmic);
+
+		ImGui::NewLine();
+		ImGui::Text("The dissipation of the dye:");
+		ImGui::SliderFloat("##dissipation", &Simulator::dissipation, 0.001f, 0.1f, NULL, ImGuiSliderFlags_Logarithmic);
+
+		ImGui::NewLine();
+		ImGui::Text("The fluid viscosity:");
+		ImGui::SliderFloat("##viscosity", &Simulator::viscosity, 0.f, 1.f, NULL, ImGuiSliderFlags_Logarithmic);
+
+		ImGui::NewLine();
+		ImGui::Text("The precision of the computations:");
+		ImGui::SliderInt("##viscous_precision", &Simulator::precision, 10, 100);
+
+		ImGui::NewLine();
+		ImGui::Text("The strength of the mouse:");
+		ImGui::SliderFloat("##mouse_strength", &Simulator::mouse_strength, 10.f, 100.f);
 
 		active = ImGui::IsWindowFocused();
 

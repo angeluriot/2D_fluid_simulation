@@ -11,7 +11,20 @@ class Renderer
 {
 public:
 
-	static dim::VertexBuffer screen; // The screen buffer.
+	enum class Layer
+	{
+		Density = 0,
+		Velocity = 1,
+		Pressure = 2,
+		Divergence = 3
+	};
+
+	static dim::VertexBuffer	screen;		// The screen buffer.
+	static dim::Shader			density;
+	static dim::Shader			velocity;
+	static dim::Shader			pressure;
+	static dim::Shader			divergence;
+	static Layer				layer;
 
 	/**
 	 * @brief Initialize the renderer.

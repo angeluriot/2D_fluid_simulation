@@ -1,5 +1,5 @@
 #version 430
-precision mediump float;
+precision highp float;
 
 in vec3 a_position;
 in vec2 a_texcoord;
