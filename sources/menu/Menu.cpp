@@ -55,7 +55,7 @@ void Menu::display()
 
 		ImGui::NewLine();
 		ImGui::Text("The quality of the simulation:");
-		if (ImGui::SliderFloat("##quality", &Simulator::quality, 0.1f, 1.f))
+		if (ImGui::SliderFloat("##quality", &Simulator::quality, 0.05f, 1.f))
 			Simulator::reset();
 
 		ImGui::NewLine();
@@ -71,12 +71,16 @@ void Menu::display()
 		ImGui::SliderFloat("##viscosity", &Simulator::viscosity, 0.f, 1.f, NULL, ImGuiSliderFlags_Logarithmic);
 
 		ImGui::NewLine();
+		ImGui::Text("The fluid vorticity:");
+		ImGui::SliderFloat("##vorticity", &Simulator::vorticity, 0.f, 1.f);
+
+		ImGui::NewLine();
 		ImGui::Text("The precision of the computations:");
 		ImGui::SliderInt("##viscous_precision", &Simulator::precision, 10, 100);
 
 		ImGui::NewLine();
 		ImGui::Text("The strength of the mouse:");
-		ImGui::SliderFloat("##mouse_strength", &Simulator::mouse_strength, 10.f, 100.f);
+		ImGui::SliderFloat("##mouse_strength", &Simulator::mouse_strength, 10.f, 300.f);
 
 		active = ImGui::IsWindowFocused();
 

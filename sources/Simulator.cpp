@@ -1,10 +1,11 @@
 #include "Simulator.hpp"
 
-float Simulator::quality = 0.35f;
+float Simulator::quality = 0.2f;
 dim::Color Simulator::dye_color = dim::Color(0.1f, 0.5f, 1.f);
 float Simulator::time_step = 0.3f;
 float Simulator::dissipation = 0.005f;
 float Simulator::viscosity = 0.f;
+float Simulator::vorticity = 0.2f;
 int Simulator::precision = 20;
 float Simulator::mouse_strength = 70.f;
 dim::VertexBuffer Simulator::screen;
@@ -18,6 +19,7 @@ dim::Shader	Simulator::density_sources;
 dim::Shader	Simulator::density_diffusion;
 dim::Shader	Simulator::density_advection;
 dim::Shader	Simulator::velocity_forces;
+dim::Shader	Simulator::velocity_vorticity;
 dim::Shader	Simulator::velocity_diffusion;
 dim::Shader	Simulator::velocity_advection;
 dim::Shader	Simulator::velocity_divergence;
@@ -33,6 +35,7 @@ void Simulator::init()
 	density_diffusion.load("shaders/all.vert", "shaders/density/diffusion.frag");
 	density_advection.load("shaders/all.vert", "shaders/density/advection.frag");
 	velocity_forces.load("shaders/all.vert", "shaders/velocity/forces.frag");
+	velocity_vorticity.load("shaders/all.vert", "shaders/velocity/vorticity.frag");
 	velocity_diffusion.load("shaders/all.vert", "shaders/velocity/diffusion.frag");
 	velocity_advection.load("shaders/all.vert", "shaders/velocity/advection.frag");
 	velocity_divergence.load("shaders/all.vert", "shaders/velocity/divergence.frag");
@@ -199,6 +202,28 @@ void Simulator::compute_velocity_forces()
 	}
 
 	prev_mouse_pos = mouse_pos;
+}
+
+void Simulator::compute_velocity_vorticity()
+{
+	screen.send_data(velocity_vorticity, dim::Mesh::screen, dim::DataType::Positions | dim::DataType::TexCoords);
+	dim::FrameBuffer velocity_temp(dim::Window::get_size() * quality, dim::Texture::Filtering::Linear, dim::Texture::Warpping::ClampToEdge, dim::Texture::Type::RGB_32f);
+
+	velocity_vorticity.bind();
+		velocity_temp.bind();
+			screen.bind();
+				velocity.get_texture().bind();
+					velocity_vorticity.send_uniform("u_screen", dim::Window::get_size() * quality);
+					velocity_vorticity.send_uniform("u_time_step", time_step);
+					velocity_vorticity.send_uniform("u_vorticity", vorticity);
+					velocity_vorticity.send_uniform("u_velocity", velocity.get_texture());
+					screen.draw();
+				velocity.get_texture().unbind();
+			screen.unbind();
+		velocity_temp.unbind();
+	velocity_vorticity.unbind();
+
+	std::swap(velocity, velocity_temp);
 }
 
 void Simulator::compute_velocity_diffusion()
@@ -384,6 +409,7 @@ void Simulator::update()
 	//compute_density_diffusion();
 	compute_density_advection();
 	compute_velocity_forces();
+	compute_velocity_vorticity();
 	//compute_velocity_diffusion();
 	compute_velocity_advection();
 	compute_velocity_divergence();

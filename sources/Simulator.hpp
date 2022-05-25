@@ -16,6 +16,7 @@ public:
 	static float				time_step;
 	static float				dissipation;
 	static float				viscosity;
+	static float				vorticity;
 	static int					precision;
 	static float				mouse_strength;
 	static dim::VertexBuffer	screen;
@@ -29,6 +30,7 @@ public:
 	static dim::Shader			density_diffusion;
 	static dim::Shader			density_advection;
 	static dim::Shader			velocity_forces;
+	static dim::Shader			velocity_vorticity;
 	static dim::Shader			velocity_diffusion;
 	static dim::Shader			velocity_advection;
 	static dim::Shader			velocity_divergence;
@@ -68,6 +70,7 @@ public:
 	static void compute_density_diffusion();
 	static void compute_density_advection();
 	static void compute_velocity_forces();
+	static void compute_velocity_vorticity();
 	static void compute_velocity_diffusion();
 	static void compute_velocity_advection();
 	static void compute_velocity_divergence();
