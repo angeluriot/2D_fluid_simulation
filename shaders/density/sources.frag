@@ -18,6 +18,8 @@ vec2 pow_2(vec2 v, float e)
 
 void main()
 {
-	float strength = clamp(0.6 - distance(v_texcoord * pow_2(u_screen, 1.2), u_mouse * pow_2(u_screen, 1.2)) / (u_strength * 3.), 0., 0.6);
-	frag_color = vec4(clamp(texture2D(u_density, v_texcoord).rgb + u_color.rgb * strength, 0., 1.), 1.);
+	vec2 screen = 100. * u_screen / ((u_screen.x + u_screen.y) / 2.);
+	vec2 coord = (u_mouse - v_texcoord) * screen;
+	vec3 splat = u_color.rgb * exp(-dot(coord, coord) / u_strength) * 0.3;
+	frag_color = vec4(clamp(texture2D(u_density, v_texcoord).rgb + splat, 0., 1.), 1.);
 }

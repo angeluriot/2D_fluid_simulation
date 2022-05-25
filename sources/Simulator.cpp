@@ -7,7 +7,7 @@ float Simulator::dissipation = 0.005f;
 float Simulator::viscosity = 0.f;
 float Simulator::vorticity = 0.2f;
 int Simulator::precision = 20;
-float Simulator::mouse_strength = 70.f;
+float Simulator::mouse_strength = 10.f;
 dim::VertexBuffer Simulator::screen;
 dim::FrameBuffer Simulator::velocity;
 dim::FrameBuffer Simulator::density;
@@ -96,7 +96,7 @@ void Simulator::compute_density_sources()
 					density.get_texture().bind();
 						density_sources.send_uniform("u_screen", dim::Window::get_size() * quality);
 						density_sources.send_uniform("u_mouse", screen_to_world(mouse_pos));
-						density_sources.send_uniform("u_strength", mouse_strength * quality);
+						density_sources.send_uniform("u_strength", mouse_strength);
 						density_sources.send_uniform("u_color", dye_color);
 						density_sources.send_uniform("u_density", density.get_texture());
 						screen.draw();
@@ -190,7 +190,7 @@ void Simulator::compute_velocity_forces()
 						velocity_forces.send_uniform("u_screen", dim::Window::get_size() * quality);
 						velocity_forces.send_uniform("u_mouse", screen_to_world(mouse_pos));
 						velocity_forces.send_uniform("u_prev_mouse", screen_to_world(prev_mouse_pos));
-						velocity_forces.send_uniform("u_strength", mouse_strength * quality);
+						velocity_forces.send_uniform("u_strength", mouse_strength);
 						velocity_forces.send_uniform("u_velocity", velocity.get_texture());
 						screen.draw();
 					velocity.get_texture().unbind();

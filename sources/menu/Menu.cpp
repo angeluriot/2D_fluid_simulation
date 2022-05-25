@@ -80,7 +80,7 @@ void Menu::display()
 
 		ImGui::NewLine();
 		ImGui::Text("The strength of the mouse:");
-		ImGui::SliderFloat("##mouse_strength", &Simulator::mouse_strength, 10.f, 300.f);
+		ImGui::SliderFloat("##mouse_strength", &Simulator::mouse_strength, 1.f, 100.f);
 
 		active = ImGui::IsWindowFocused();
 

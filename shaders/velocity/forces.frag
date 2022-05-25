@@ -13,7 +13,9 @@ uniform sampler2D u_velocity;
 
 void main()
 {
-	vec2 move = (u_mouse - u_prev_mouse) * vec2(pow(u_screen.x, 1.5), pow(u_screen.y, 1.5)) * 0.02;
-	float strength = clamp(3. - pow(distance(v_texcoord * u_screen, u_mouse * u_screen), 2) / (u_strength * 1.2), 0., 3.);
-	frag_color = vec4(texture2D(u_velocity, v_texcoord).xy + move * strength, 0., 1.);
+	vec2 screen = 100. * u_screen / ((u_screen.x + u_screen.y) / 2.);
+	vec2 move = (u_mouse - u_prev_mouse) * screen;
+	vec2 coord = (u_mouse - v_texcoord) * screen;
+	vec2 splat = move * exp(-dot(coord, coord) / u_strength);
+	frag_color = vec4(texture2D(u_velocity, v_texcoord).xy + splat, 0., 1.);
 }
