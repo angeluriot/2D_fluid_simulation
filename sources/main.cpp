@@ -3,7 +3,7 @@
 
 int main()
 {
-	dim::Window::open("2D fractals generator", 0.75f, "resources/icons/icon.png");
+	dim::Window::open("2D fluid simulation", 0.75f, "resources/icons/icon.png");
 	dim::Window::get_window().setFramerateLimit(60);
 	Simulator::init();
 

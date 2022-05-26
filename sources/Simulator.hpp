@@ -11,33 +11,30 @@ class Simulator
 {
 public:
 
-	static float				quality;
-	static dim::Color			dye_color;
-	static float				time_step;
-	static float				dissipation;
-	static float				viscosity;
-	static float				vorticity;
-	static int					precision;
-	static float				mouse_strength;
-	static dim::VertexBuffer	screen;
-	static dim::FrameBuffer		velocity;
-	static dim::FrameBuffer		density;
-	static dim::FrameBuffer		divergence;
-	static dim::FrameBuffer		pressure;
-	static dim::FrameBuffer		gradient;
-	static dim::Shader			copy_shader;
-	static dim::Shader			density_sources;
-	static dim::Shader			density_diffusion;
-	static dim::Shader			density_advection;
-	static dim::Shader			velocity_forces;
-	static dim::Shader			velocity_vorticity;
-	static dim::Shader			velocity_diffusion;
-	static dim::Shader			velocity_advection;
-	static dim::Shader			velocity_divergence;
-	static dim::Shader			velocity_pressure;
-	static dim::Shader			velocity_gradient;
-	static dim::Shader			velocity_subtraction;
-	static dim::Shader			velocity_boundaries;
+	static float				resolution;				// The resolution of the simulation.
+	static dim::Color			dye_color;				// The color of the dye.
+	static float				time_step;				// The time step of the simulation.
+	static float				dissipation;			// The dissipation rate of the dye.
+	static float				vorticity;				// The vorticity of the fluid.
+	static int					iterations;				// The number of iterations of the computation.
+	static float				mouse_strength;			// The strength of the mouse interactions.
+	static dim::VertexBuffer	screen;					// The screen vertex buffer.
+	static dim::FrameBuffer		velocity;				// The velocity of the fluid.
+	static dim::FrameBuffer		density;				// The density of the dye.
+	static dim::FrameBuffer		divergence;				// The divergence of the fluid.
+	static dim::FrameBuffer		pressure;				// The pressure of the fluid.
+	static dim::FrameBuffer		gradient;				// The gradient of the pressure.
+	static dim::Shader			copy_shader;			// A shader to copy a texture.
+	static dim::Shader			density_sources;		// A shader to compute the dye sources.
+	static dim::Shader			density_advection;		// A shader to compute the dye advection.
+	static dim::Shader			velocity_forces;		// A shader to compute the fluid forces.
+	static dim::Shader			velocity_vorticity;		// A shader to compute the fluid vorticity.
+	static dim::Shader			velocity_advection;		// A shader to compute the fluid advection.
+	static dim::Shader			velocity_divergence;	// A shader to compute the fluid divergence.
+	static dim::Shader			velocity_pressure;		// A shader to compute the fluid pressure.
+	static dim::Shader			velocity_gradient;		// A shader to compute the pressure gradient.
+	static dim::Shader			velocity_subtraction;	// A shader to subtract the gradient to the velocity.
+	static dim::Shader			velocity_boundaries;	// A shader to apply the fluid boundaries.
 
 	/**
 	 * @brief Initialize the simulation.
@@ -65,18 +62,62 @@ public:
 	 */
 	static dim::Vector2int world_to_screen(dim::Vector2 position);
 
+	/**
+	 * @brief Copy a texture with a shader.
+	 *
+	 * @param source the source texture
+	 * @param target the target texture
+	 */
 	static void copy(dim::FrameBuffer& source, dim::FrameBuffer& target);
+
+	/**
+	 * @brief Compute the dye sources.
+	 */
 	static void compute_density_sources();
-	static void compute_density_diffusion();
+
+	/**
+	 * @brief Compute the advection of the dye.
+	 */
 	static void compute_density_advection();
+
+	/**
+	 * @brief Compute the fluid forces.
+	 */
 	static void compute_velocity_forces();
+
+	/**
+	 * @brief Compute the fluid vorticity.
+	 */
 	static void compute_velocity_vorticity();
-	static void compute_velocity_diffusion();
+
+	/**
+	 * @brief Compute the fluid advection.
+	 */
 	static void compute_velocity_advection();
+
+	/**
+	 * @brief Compute the fluid divergence.
+	 */
 	static void compute_velocity_divergence();
+
+	/**
+	 * @brief Compute the fluid pressure.
+	 */
 	static void compute_velocity_pressure();
+
+	/**
+	 * @brief Compute the pressure gradient.
+	 */
 	static void compute_velocity_gradient();
+
+	/**
+	 * @brief Subtract the gradient to the velocity.
+	 */
 	static void compute_velocity_subtraction();
+
+	/**
+	 * @brief Apply the fluid boundaries.
+	 */
 	static void compute_velocity_boundaries();
 
 	/**

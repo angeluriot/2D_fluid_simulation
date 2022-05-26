@@ -1,11 +1,11 @@
 #include "Simulator.hpp"
 
-dim::VertexBuffer Renderer::screen;
-dim::Shader Renderer::density;
-dim::Shader Renderer::velocity;
-dim::Shader Renderer::pressure;
-dim::Shader Renderer::divergence;
-Renderer::Layer Renderer::layer;
+dim::VertexBuffer	Renderer::screen;
+dim::Shader			Renderer::density;
+dim::Shader			Renderer::velocity;
+dim::Shader			Renderer::pressure;
+dim::Shader			Renderer::divergence;
+Renderer::Layer		Renderer::layer;
 
 void Renderer::init()
 {
@@ -47,7 +47,7 @@ void Renderer::draw()
 	shader.bind();
 		screen.bind();
 			texture.bind();
-				shader.send_uniform("u_screen", dim::Window::get_size() * Simulator::quality);
+				shader.send_uniform("u_screen", dim::Window::get_size() * Simulator::resolution);
 				shader.send_uniform("u_texture", texture);
 				screen.draw();
 			texture.unbind();

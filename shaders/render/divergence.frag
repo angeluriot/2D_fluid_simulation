@@ -10,7 +10,7 @@ uniform sampler2D u_texture;
 
 void main()
 {
-	float divergence = texture2D(u_texture, v_texcoord).r * 50.;
+	float divergence = texture2D(u_texture, v_texcoord).r * 70.;
 	vec3 color;
 
 	if (divergence < 0.)

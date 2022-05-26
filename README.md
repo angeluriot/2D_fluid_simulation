@@ -1,54 +1,80 @@
 # 2D fluid simulation
 
-![Release](https://img.shields.io/badge/Release-v1.0-blueviolet)
+![Release](https://img.shields.io/badge/Release-v2.0-blueviolet)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-0052cf)
-![Library](https://img.shields.io/badge/Library-SFML-00cf2c)
-![Size](https://img.shields.io/badge/Size-32%20Mo-f12222)
+![Libraries](https://img.shields.io/badge/Libraries-Dimension3D-00cf2c)
+![Size](https://img.shields.io/badge/Size-227Mo-f12222)
 ![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 <br/>
 
-This program approximates the solutions of the Navier-Stokes equations to simulate the behavior of a fluid in 2D.
+This program approximates the solutions of the Navier-Stokes equations to simulate the behavior of a fluid in 2D. It can be shaken with the mouse in real time.
+
+<br/>
+
+⚠️ This repository contains **submodules**, add `--recurse-submodules` when cloning ⚠️
 
 <br/>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/angeluriot/2D_fluid_simulation/master/resources/misc/2D_fluid.gif" width="700">
+	<img src="resources/misc/thumbnail.png" width="700">
 </p>
 
 <br/>
 
-# Dependencies
+# Summary
 
-* SFML
+* **[Summary](#summary)**
+* **[Features](#features)**
+* **[Install](#install)**
+	* [Skeleton project install](#skeleton-project-install)
+* **[Releases](#releases)**
+* **[Tests](#tests)**
+* **[Credits](#credits)**
 
 <br/>
 
 # Features
 
-* A menu to choose the size of the grid for the calculation and the viscosity of the fluid :
+* A menu to control the simulation
 
-<p align="center">
-	<img src="https://i.imgur.com/o42pUuJ.png" width="500">
-</p>
+* Different layers to display *(dye, velocity, pressure...)*
 
-* Left click to move the fluid :
+* You can choose the resolution of the grid
 
-<p align="center">
-	<img src="https://i.imgur.com/DALWW4Z.png" width="500">
-</p>
+* You can change the strength of the vorticity confinement and the mouse forces
 
-* Right click to replace the particles :
-
-<p align="center">
-	<img src="https://i.imgur.com/Nkt7PyG.png" width="500">
-</p>
+* You can choose the number of iterations for the solver
 
 <br/>
 
-# Notes
+# Install
 
-* The simulation does not use at all the particles visible on the screen, they behave like buoys floating on the surface so that we can see what is happening.
+### Skeleton project install
+
+This repository is based on my [**Graphics skeleton project**](https://github.com/angeluriot/Graphics_skeleton), so go see its [**install**](https://github.com/angeluriot/Graphics_skeleton#install) part first.
+
+<br/>
+
+# Releases
+
+If you just want to test the program without editing the source code, go see the [**Releases**](https://github.com/angeluriot/2D_fluid_simulation/releases).
+
+<br/>
+
+# Tests
+
+<p align="center">
+	<img src="resources/misc/test_1.png" width="500">
+</p>
+
+<p align="center">
+	<img src="resources/misc/test_2.png" width="500">
+</p>
+
+<p align="center">
+	<img src="resources/misc/test_3.png" width="500">
+</p>
 
 <br/>
 
