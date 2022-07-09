@@ -52,7 +52,7 @@ This program approximates the solutions of the Navier-Stokes equations to simula
 
 ### Skeleton project install
 
-This repository is based on my [**Graphics skeleton project**](https://github.com/angeluriot/Graphics_skeleton), so go see its [**install**](https://github.com/angeluriot/Graphics_skeleton#install) part first.
+This repository is based on my [**Graphics skeleton project**](https://github.com/angeluriot/Graphics_skeleton), so go see its [**install**](https://github.com/angeluriot/Graphics_skeleton#install) part.
 
 <br/>
 
