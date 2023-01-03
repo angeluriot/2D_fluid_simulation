@@ -10,7 +10,7 @@ uniform sampler2D u_pressure;
 
 float get_pressure(float x, float y)
 {
-	return texture2D(u_pressure, v_texcoord + vec2(x, y) / u_screen).x;
+	return texture(u_pressure, v_texcoord + vec2(x, y) / u_screen).x;
 }
 
 void main()

@@ -10,7 +10,7 @@ uniform sampler2D u_texture;
 
 void main()
 {
-	float pressure = texture2D(u_texture, v_texcoord).r * 30.;
+	float pressure = texture(u_texture, v_texcoord).r * 30.;
 	vec3 color;
 
 	if (pressure < 0.)

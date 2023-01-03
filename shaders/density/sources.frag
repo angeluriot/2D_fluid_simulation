@@ -21,5 +21,5 @@ void main()
 	vec2 screen = 100. * u_screen / ((u_screen.x + u_screen.y) / 2.);
 	vec2 coord = (u_mouse - v_texcoord) * screen;
 	vec3 splat = u_color.rgb * exp(-dot(coord, coord) / u_strength) * 0.3;
-	frag_color = vec4(clamp(texture2D(u_density, v_texcoord).rgb + splat, 0., 1.), 1.);
+	frag_color = vec4(clamp(texture(u_density, v_texcoord).rgb + splat, 0., 1.), 1.);
 }

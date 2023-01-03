@@ -13,13 +13,13 @@ uniform sampler2D u_velocity_temp;
 
 vec2 get_velocity(float x, float y)
 {
-	return texture2D(u_velocity_temp, v_texcoord + vec2(x, y) / u_screen).xy;
+	return texture(u_velocity_temp, v_texcoord + vec2(x, y) / u_screen).xy;
 }
 
 void main()
 {
 	float k = u_time_step * u_viscosity * u_screen.x * u_screen.y;
-	vec2 v = texture2D(u_velocity, v_texcoord).xy;
+	vec2 v = texture(u_velocity, v_texcoord).xy;
 	vec2 velocity = (v + k * (get_velocity(-1., 0.) + get_velocity(1., 0.) + get_velocity(0., -1.) + get_velocity(0., 1.))) / (1. + 4. * k);
 	frag_color = vec4(velocity, 0., 1.);
 }

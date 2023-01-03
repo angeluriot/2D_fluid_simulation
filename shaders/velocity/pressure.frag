@@ -11,12 +11,12 @@ uniform sampler2D u_pressure;
 
 float get_pressure(float x, float y)
 {
-	return texture2D(u_pressure, v_texcoord + vec2(x, y) / u_screen).x;
+	return texture(u_pressure, v_texcoord + vec2(x, y) / u_screen).x;
 }
 
 void main()
 {
-	float d = texture2D(u_divergence, v_texcoord).x;
+	float d = texture(u_divergence, v_texcoord).x;
 	float pressure = (d + get_pressure(-1., 0.) + get_pressure(1., 0.) + get_pressure(0., -1.) + get_pressure(0., 1.)) / 4.;
 	frag_color = vec4(pressure, 0., 0., 1.);
 }

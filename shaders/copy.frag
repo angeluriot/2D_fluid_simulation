@@ -8,6 +8,7 @@ out vec4 frag_color;
 uniform sampler2D u_texture;
 
 void main()
-{
-	frag_color = vec4(texture2D(u_texture, v_texcoord).rgb, 1.);
+{	
+
+	frag_color = vec4(texture(u_texture, v_texcoord).rgb, 1.);
 }

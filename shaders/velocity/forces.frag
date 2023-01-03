@@ -17,5 +17,5 @@ void main()
 	vec2 move = (u_mouse - u_prev_mouse) * screen;
 	vec2 coord = (u_mouse - v_texcoord) * screen;
 	vec2 splat = move * exp(-dot(coord, coord) / u_strength);
-	frag_color = vec4(texture2D(u_velocity, v_texcoord).xy + splat, 0., 1.);
+	frag_color = vec4(texture(u_velocity, v_texcoord).xy + splat, 0., 1.);
 }
