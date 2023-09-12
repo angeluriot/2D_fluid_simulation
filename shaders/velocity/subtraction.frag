@@ -10,6 +10,6 @@ uniform sampler2D u_gradient;
 
 void main()
 {
-	vec2 velocity = texture2D(u_velocity, v_texcoord).xy - texture2D(u_gradient, v_texcoord).xy;
+	vec2 velocity = texture(u_velocity, v_texcoord).xy - texture(u_gradient, v_texcoord).xy;
 	frag_color = vec4(velocity, 0., 1.);
 }

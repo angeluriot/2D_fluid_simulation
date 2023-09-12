@@ -12,7 +12,7 @@ uniform sampler2D u_velocity;
 
 vec2 get_velocity(float x, float y)
 {
-	return texture2D(u_velocity, v_texcoord + vec2(x, y) / u_screen).xy;
+	return texture(u_velocity, v_texcoord + vec2(x, y) / u_screen).xy;
 }
 
 float get_curl(float x, float y)
