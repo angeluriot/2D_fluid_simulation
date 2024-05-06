@@ -1,4 +1,4 @@
-# 2D fluid simulation
+# 🌊 2D fluid simulation
 
 ![Release](https://img.shields.io/badge/Release-v2.0-blueviolet)
 ![Language](https://img.shields.io/badge/Language-C%2B%2B-0052cf)
@@ -22,19 +22,19 @@ This program approximates the solutions of the Navier-Stokes equations to simula
 
 <br/>
 
-# Summary
+# 📋 Summary
 
-* **[Summary](#summary)**
-* **[Features](#features)**
-* **[Install](#install)**
-	* [Skeleton project install](#skeleton-project-install)
-* **[Releases](#releases)**
-* **[Tests](#tests)**
-* **[Credits](#credits)**
+* **[📋 Summary](#-summary)**
+* **[✨ Features](#-features)**
+* **[🛠️ Install](#%EF%B8%8F-install)**
+	* [🦴 Skeleton project install](#-skeleton-project-install)
+* **[🗓️ Releases](#%EF%B8%8F-releases)**
+* **[🧪 Tests](#-tests)**
+* **[🙏 Credits](#-credits)**
 
 <br/>
 
-# Features
+# ✨ Features
 
 * A menu to control the simulation
 
@@ -48,21 +48,21 @@ This program approximates the solutions of the Navier-Stokes equations to simula
 
 <br/>
 
-# Install
+# 🛠️ Install
 
-### Skeleton project install
+## 🦴 Skeleton project install
 
 This repository is based on my [**Graphics skeleton project**](https://github.com/angeluriot/Graphics_skeleton), so go see its [**install**](https://github.com/angeluriot/Graphics_skeleton#install) part.
 
 <br/>
 
-# Releases
+# 🗓️ Releases
 
 If you just want to test the program without editing the source code, go see the [**Releases**](https://github.com/angeluriot/2D_fluid_simulation/releases).
 
 <br/>
 
-# Tests
+# 🧪 Tests
 
 <p align="center">
 	<img src="resources/misc/test_1.png" width="500">
@@ -78,6 +78,6 @@ If you just want to test the program without editing the source code, go see the
 
 <br/>
 
-# Credits
+# 🙏 Credits
 
 * [**Angel Uriot**](https://github.com/angeluriot) : Creator of the project.
